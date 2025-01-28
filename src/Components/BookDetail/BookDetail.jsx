@@ -1,4 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom"
+import { addToReadList } from "../../utilities/addToDd";
 
 
 const BookDetail = () => {
@@ -9,10 +10,18 @@ const BookDetail = () => {
 
   const data = useLoaderData();
 
+console.log(Array.isArray(data));
+
   const book = data.find(book => book.bookId === id);
+
+
 
   const { image, tags, yearOfPublishing, publisher, author, bookName, rating, category, review,totalPages } = book;
 
+  // add to read list function
+  const handleAddToReadList =(id)=>{
+      addToReadList(id)
+  }
   return (
     <div className="hero bg-base-200 my-4">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -40,7 +49,7 @@ const BookDetail = () => {
           </div>
           {/* btn */}
           <div className="flex gap-5 my-3">
-          <button className="btn btn-outline btn-accent">Read</button>
+          <button onClick={()=>handleAddToReadList(id)} className="btn btn-outline btn-accent">Add To Read</button>
           <button className="btn btn-outline btn-accent">Wishlist</button>
           </div>
         </div>

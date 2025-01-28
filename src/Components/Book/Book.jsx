@@ -23,6 +23,7 @@ const Book = ({ book }) => {
 
                 </h2>
                 <p>By: {author}</p>
+                <p>Total Pages: {totalPages}</p>
                 <div className="border-t-2 border-dashed"></div>
 
 
